@@ -9,3 +9,6 @@ env/
 .DS_Store
 Thumbs.db
 notes.json
+apps.json
+contacts.json
+sites.json

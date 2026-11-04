@@ -2,4 +2,4 @@
 from .engine import Assistant, Reply
 
 __all__ = ["Assistant", "Reply"]
-__version__ = "1.0.0"
+__version__ = "2.0.0"

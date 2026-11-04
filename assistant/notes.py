@@ -25,6 +25,15 @@ class NoteStore:
         notes.append({"text": text.strip(), "time": (when or datetime.now()).isoformat(timespec="seconds")})
         self.path.write_text(json.dumps(notes, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    def remove(self, number: int):
+        """Delete note `number` (1-based). Returns its text, or None if there is no such note."""
+        notes = self.all()
+        if not 1 <= number <= len(notes):
+            return None
+        removed = notes.pop(number - 1)
+        self.path.write_text(json.dumps(notes, indent=2, ensure_ascii=False), encoding="utf-8")
+        return removed["text"]
+
     def clear(self) -> int:
         count = len(self.all())
         if self.path.exists():
