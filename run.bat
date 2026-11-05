@@ -1,3 +1,4 @@
+
 @echo off
 rem Starts the assistant. Say "Jarvis, ..." before each command. Falls back to text mode if the microphone is not available.
 cd /d "%~dp0"

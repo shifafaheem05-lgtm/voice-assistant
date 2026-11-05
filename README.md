@@ -2,7 +2,23 @@
 
 A Python desktop assistant you can **talk to or type to**. It opens apps and 70+ websites, sends WhatsApp messages and emails, searches the web or a single site, converts units and currencies, sets alarms, controls your PC, does maths, takes notes and more. The command engine is separate from the microphone code, so the logic is fully unit-tested and the assistant also runs in plain **text mode** with no extra packages.
 
-## Features
+## Web version (runs in the browser, free hosting)
+
+The `docs/` folder is a complete web app: **https://shifafaheem05-lgtm.github.io/voice-assistant/** (after you turn on GitHub Pages, see below).
+
+- Works on phones too. Voice input needs Chrome, Edge or Safari; typing works everywhere.
+- Same engine ideas as the desktop app: WhatsApp (opens the chat with your message typed in, you press Send), email, 70+ websites, site search, maps, translate, units and currency, weather, Wikipedia answers, alarms and reminders, notes, contacts and Roman Urdu.
+- Contacts and notes are saved in your own browser (localStorage), never on a server. There is no backend and no API key.
+- It cannot control your computer (volume, brightness, shutdown, closing apps, typing for you). That needs the desktop version.
+- Timers and alarms only fire while the tab stays open.
+
+**Deploy it free on GitHub Pages:** push the repo, then on GitHub go to *Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main`, folder: `/docs` → Save.* After a minute the site is live at the address above.
+
+**Run it on your computer:** `cd docs` then `python -m http.server 8000` and open http://localhost:8000 (opening index.html by double-click does not work, browsers block modules from files).
+
+**Test it:** `node --test tests/web/engine.test.mjs` (needs Node 18 or newer).
+
+## Features (desktop version)
 
 **Messaging**
 - **WhatsApp by voice** – "send a message to Ali saying I'll be late", "open whatsapp and send message to Ali hello", "message 0300 1234567 call me". It opens the chat with your message typed in, then presses Enter for you. It asks "are you sure?" first (turn that off with `--no-confirm`), and if you only say "message Ali" it asks what to say.
@@ -40,7 +56,7 @@ A Python desktop assistant you can **talk to or type to**. It opens apps and 70+
 - **Fun** – flip a coin, roll a dice, tell a joke, a quote.
 - **Wake word** – optional `--wake-word jarvis` so it only reacts to "jarvis, ...". Answers like "yes" don't need it.
 - **Voice or text mode** – if voice packages or a microphone are missing, you get a clear message instead of a crash.
-- **136 automated tests** for the calculator, commands, messaging, contacts, sites, conversions, Roman Urdu and PC control.
+- **136 automated Python tests** (plus 17 JavaScript test groups for the web version) for the calculator, commands, messaging, contacts, sites, conversions, Roman Urdu and PC control.
 
 ## Getting Started
 
@@ -143,7 +159,8 @@ assistant/
 ├── keys.py      spoken keyboard shortcuts and typing (Windows)
 ├── speech.py    text and voice input/output back-ends
 └── cli.py       main loop, wake word, command-line options
-tests/             unit tests (test_assistant.py, test_features.py)
+docs/              the web version (index.html, app.js, engine.js)
+tests/             unit tests (test_assistant.py, test_features.py, web/engine.test.mjs)
 ```
 
 ## Author

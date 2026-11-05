@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Assistant</title>
+<meta name="description" content="A voice assistant in your browser: WhatsApp messages, 70+ websites, alarms, translation, conversions and more.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Crect x='13' y='6' width='6' height='13' rx='3' fill='white'/%3E%3Cpath d='M9 15a7 7 0 0 0 14 0M16 22v4' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><span class="logo" aria-hidden="true"></span><div><h1>Voice Assistant</h1><p id="status">Type or tap the mic</p></div></div>
+    <nav>
+      <button class="ghost" data-panel="contacts">Contacts</button>
+      <button class="ghost" data-panel="notes">Notes</button>
+      <button class="ghost" data-panel="settings">Settings</button>
+    </nav>
+  </header>
+
+  <main id="chat" aria-live="polite">
+    <section class="welcome" id="welcome">
+      <h2>What can I do for you?</h2>
+      <p>Tap an example or just say it. Everything runs in your browser.</p>
+      <div class="groups">
+        <div><h3>Messages</h3>
+          <button class="chip">add contact Ali 0300 1234567</button>
+          <button class="chip">send a message to Ali saying I'll be late</button>
+          <button class="chip">send an email to Sara about the report</button></div>
+        <div><h3>Web</h3>
+          <button class="chip">open claude</button>
+          <button class="chip">search amazon for wireless headphones</button>
+          <button class="chip">navigate to Islamabad airport</button>
+          <button class="chip">translate good morning to urdu</button></div>
+        <div><h3>Everyday</h3>
+          <button class="chip">remind me in 10 minutes to drink water</button>
+          <button class="chip">set an alarm for 7 am</button>
+          <button class="chip">convert 10 km to miles</button>
+          <button class="chip">100 dollars to rupees</button>
+          <button class="chip">weather in Karachi</button>
+          <button class="chip">who is Ada Lovelace</button></div>
+        <div><h3>Roman Urdu</h3>
+          <button class="chip">youtube kholo</button>
+          <button class="chip">Ali ko hello bhejo</button>
+          <button class="chip">5 minute ka timer lagao</button></div>
+      </div>
+    </section>
+  </main>
+
+  <form id="form" autocomplete="off">
+    <button type="button" id="mic" class="mic" aria-label="Speak" title="Speak">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+    </button>
+    <input id="input" type="text" placeholder="Say or type a command…" aria-label="Command" enterkeyhint="send">
+    <button type="submit" class="send">Send</button>
+  </form>
+</div>
+
+<aside id="drawer" class="drawer" hidden>
+  <div class="drawer-head"><h2 id="drawer-title"></h2><button class="ghost" id="close-drawer" aria-label="Close">Close</button></div>
+  <div id="drawer-body"></div>
+</aside>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
